@@ -4,15 +4,21 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
   const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
+    {
+      path: '/',
+      name: 'Home',
+      component: () => import('@/views/auth')
+    },
+    {
+      path: '/:month',
+      name: 'Mainpage',
+      component: () => import('@/views/mainform')
+    }
 ]
 
 const router = new VueRouter({
-  routes
+  routes,
+  mode: 'history'
 })
 
 export default router
