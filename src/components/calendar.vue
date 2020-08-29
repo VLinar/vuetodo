@@ -64,7 +64,7 @@
     td{
         height: 40px;
         text-align: end;
-        border: 1px solid grey;  
+        border: 1px solid rgb(221, 221, 221);  
         vertical-align: baseline;
         padding: 5px;
     }

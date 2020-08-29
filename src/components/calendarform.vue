@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="calblock">
         <div class="head">
             <div class="monthhead">
                 <h2>Август </h2>
@@ -32,11 +32,15 @@
 </script>
 
 <style scoped>
+    .calblock{
+        padding: 15px 20px;
+    }
     .head{
         display: grid;
         grid-template-columns: 2fr 1fr!important;
         align-items: center;
         padding: 0px 10px;
+
     }
     .head h2{
         margin: 10px 0px;
@@ -52,5 +56,15 @@
     }
     .monthhead {
         display: flex;
+        align-items: center;
+    }
+    select{
+        height: fit-content;
+        display: block;
+        font-size: 1.5em;
+        margin: 0px 5px;
+    }
+    option {
+        font-size: 0.7em;
     }
 </style>
