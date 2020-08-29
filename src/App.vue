@@ -14,7 +14,6 @@
   height: 95vh;
   display: flex;
 }
-
 .main{
   width: 80%;
   margin: auto;
@@ -23,7 +22,10 @@
 
 body {
   background: #c0c0c069;
+  margin: 0px;
+  padding: 0px;
 }
+
 #nav {
   padding: 30px;
 }

@@ -1,26 +1,57 @@
 <template>
-    <div class="main">
-        <div class="head">{{$route.params.month}}</div>
-        <div>Not shapka</div>
+    <div class="background">
+        <div class="back">
+            <div class="form">
+                <todo />
+                <calendar />
+            </div>   
+        </div>
     </div>
-
 </template>
 
 <script>
+    import todo from '@/components/todo.vue';
+    import calendar from '@/components/calendarform.vue';
+import { mapGetters } from 'vuex';
     export default {
-        
+        components: {
+            todo,
+            calendar
+        },
+        created(){
+            // this.correctmonth(this.$route.params.month) 
+        },
+        computed: {
+            ...mapGetters([
+                'Getmonth'
+            ])
+        },
+        methods: {
+            correctmonth(path){
+                if (this.Getmonth.filter(e => e.title === path).length < 1)  this.$router.push('/yanvar/1')
+            }
+        }
     }
 </script>
 
 <style scoped>
-    .head {
-        background: rgb(201, 73, 73);
-        color: white;
-        font-size: 24px;
-        text-align: center;
-        height: 50px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+.background {
+    background: brown;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+
+.back{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+.form{
+    background: white;
+    grid-template-columns: 1fr 2fr;
+    padding: 15px;
+    display: grid;
+}
 </style>

@@ -10,9 +10,24 @@ Vue.use(VueRouter)
       component: () => import('@/views/auth')
     },
     {
-      path: '/:month',
+      path: '/:month/:day',
       name: 'Mainpage',
       component: () => import('@/views/mainform')
+    },
+    {
+      path: '/:month/',
+      name: 'MainpageRDR',
+      redirect: '/:month/1'
+    },
+    {
+      path: '*',
+      name: '404',
+      component: () => import('@/views/404error')
+    },
+    {
+      path: '/test',
+      name: '404',
+      component: () => import('@/views/test')
     }
 ]
 
