@@ -1,6 +1,8 @@
 <template>
     <div class="todo">
-        <span class="red">СЕГОДНЯ</span>
+        <span 
+            class="red"
+        >СЕГОДНЯ</span>
         <div>
             <h2>Воскресенье, 22 августа</h2>
             <!-- <hr> -->

@@ -8,7 +8,15 @@
             </thead>
             <tbody>
                 <tr v-for="(week, index) in getcalendar" :key='index' class="week">
-                    <td v-for="day in week" :key="day"><h3>{{day}}</h3></td>
+                    <router-link 
+                        tag="td"
+                        v-for="(day,index) in week" 
+                        :key="index"
+                        :to="'' + day" 
+                        :style="[$route.params.day == day ? {'border':'2.5px solid red', 'color':'red'}:{'color':'black'}]"
+                    >
+                        <h3>{{day}}</h3>
+                    </router-link>
                 </tr>
             </tbody>
         </table> 
@@ -16,6 +24,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
     export default {
          data() {
             return {
@@ -26,11 +35,13 @@
             }
         },
         created(){
-            this.dayinmonth = new Date(2020, 8, 0).getDate()
+            this.getmonthcount()
         },
         computed: {
+            ...mapGetters([
+                'GetNumberMonth'
+            ]),
             getcalendar(){
-                // console.log('перезапуск компьютед')
                 const result = [];
                 const monthStartsOn = this.getDayOfWeek();
                 let day = 1;
@@ -50,6 +61,15 @@
         methods: {
             getDayOfWeek(){
                     return this.WEEK_DAYS_FROM_MONDAY[this.date.getDay()];
+            },
+            getmonthcount(){
+                let idmonth = this.GetNumberMonth(this.$route.params.month)
+                this.dayinmonth = new Date(this.$route.params.year, idmonth + 1, 0).getDate()
+            }
+        },
+        watch: {
+            $route(){
+                this.getmonthcount()
             }
         }
     }
@@ -62,7 +82,8 @@
         height: max-content;
     }
     td{
-        height: 40px;
+        max-height: 50px;
+        height: 50px;
         text-align: end;
         border: 1px solid rgb(221, 221, 221);  
         vertical-align: baseline;
@@ -70,7 +91,10 @@
     }
     td h3{
         margin: 0px;
-        margin-bottom: 5px
+        /* margin-bottom: 5px */
+    }
+    td:hover{
+        background: #eaeae9
     }
     .calendar{
         padding: 10px;

@@ -7,62 +7,62 @@ export default new Vuex.Store({
   state: {
     mounth: [
         {
-            id: 1,
+            id: 0,
             name: 'Январь',
-            title: 'yanvar'
+            title: 'january'
         },
         {
-            id: 2,
+            id: 1,
             name: 'Февраль',
             title: 'februal'
         },
         {
-            id: 3,
+            id: 2,
             name: 'Март',
             title: 'mart'
         },
         {
-            id: 4,
+            id: 3,
             name: 'Апрель',
             title: 'april'
         },
         {
-            id: 5,
+            id: 4,
             name: 'Май',
             title: 'may'
         },
         {
-            id: 6,
+            id: 5,
             name: 'Июнь',
             title: 'june'
         },
         {
-            id: 7,
+            id: 6,
             name: 'Июль',
             title: 'jule'
         },
         {
-            id: 8,
+            id: 7,
             name: 'Август',
             title: 'august'
         },
         {
-            id: 9,
+            id: 8,
             name: 'Сентябрь',
             title: 'september'
         },
         {
-            id: 10,
+            id: 9,
             name: 'Октябрь',
             title: 'oktober'
         },
         {
-            id: 11,
+            id: 10,
             name: 'Ноябрь',
             title: 'november'
         },
         {
-            id: 12,
+            id: 11,
             name: 'Декабрь',
             title: 'december'
         },
@@ -84,7 +84,8 @@ export default new Vuex.Store({
             checked: false,
             userid: 2
         }
-    ]
+    ],
+    year: '2020'
   },
   mutations: {
   },
@@ -93,6 +94,30 @@ export default new Vuex.Store({
   getters: {
     Getmonth: (state) => {
       return state.mounth
-    }
+    },
+    GetNextPrevDay: (state) => (month , year) => {
+        let currentmonth = state.mounth
+                .filter(e => e.title === month)
+                .map(e => {return e.id})[0]
+        console.log()
+        return  {
+            prev: {
+                month: state.mounth.filter(e => e.id === new Date(year, currentmonth-1).getMonth() ).map(e => {return e.title})[0],
+                year: new Date(year, currentmonth-1).getFullYear()
+            },
+            next: {
+                month: state.mounth.filter(e => e.id === new Date(year, currentmonth+1).getMonth() ).map(e => {return e.title})[0],
+                year: new Date(year, currentmonth+1).getFullYear()
+            }
+        }
+      
+    },
+    GetNameMonth: (state) => (title) => {
+        return state.mounth.filter(e => e.title === title).map(e => e.name).map(e => {return e})[0]
+    },
+    GetNumberMonth: (state) => (title) => {
+        // state.mounth.filter(e => e.title === title).map(e => e.id)
+        return state.mounth.filter(e => e.title === title).map(e => e.id)[0]
+    } 
   }
 })

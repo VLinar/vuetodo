@@ -21,9 +21,9 @@
         },
         created(){
             let date = new Date()
-            let todaymonth = this.Getmonth.filter(e => e.id === date.getMonth() + 1)
-            this.url = '/' + todaymonth.map(e => {return e.title})
-            console.log(this.url)
+            let todaymonth = this.Getmonth.filter(e => e.id === date.getMonth())
+            this.url = '/' + date.getFullYear() +'/' + todaymonth.map(e => {return e.title}) + '/' + date.getDate()
+            console.log(todaymonth)
         }
     }
 </script>

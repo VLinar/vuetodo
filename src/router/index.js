@@ -10,12 +10,12 @@ Vue.use(VueRouter)
       component: () => import('@/views/auth')
     },
     {
-      path: '/:month/:day',
+      path: '/:year/:month/:day',
       name: 'Mainpage',
       component: () => import('@/views/mainform')
     },
     {
-      path: '/:month/',
+      path: '/:year/:month/',
       name: 'MainpageRDR',
       redirect: '/:month/1'
     },
@@ -23,11 +23,6 @@ Vue.use(VueRouter)
       path: '*',
       name: '404',
       component: () => import('@/views/404error')
-    },
-    {
-      path: '/test',
-      name: '404',
-      component: () => import('@/views/test')
     }
 ]
 
