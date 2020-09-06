@@ -12,8 +12,8 @@
                         tag="td"
                         v-for="(day,index) in week" 
                         :key="index"
-                        :to="'' + day" 
-                        :style="[$route.params.day == day ? {'border':'2.5px solid red', 'color':'red'}:{'color':'black'}]"
+                        :to="day !== undefined ? ''+day :'#'" 
+                        :active-class="day !== undefined ? 'red' : 'none'"
                     >
                         <h3>{{day}}</h3>
                     </router-link>
@@ -28,14 +28,19 @@ import { mapGetters } from 'vuex';
     export default {
          data() {
             return {
-                date: new Date(2020, 7),
+                date: new Date (2020, 7),
                 dayinmonth: '',
                 WEEK_DAYS_FROM_MONDAY: [6, 0, 1, 2, 3, 4, 5],
                 headtitle: ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс']
             }
         },
         created(){
-            this.getmonthcount()
+            this.date = new Date(this.$route.params.year, this.GetNumberMonth(this.$route.params.month))
+            this.dayinmonth = this.getmonthcount()
+        },
+        beforeUpdate(){
+            this.date = new Date(this.$route.params.year, this.GetNumberMonth(this.$route.params.month))
+            this.dayinmonth = this.getmonthcount()
         },
         computed: {
             ...mapGetters([
@@ -51,27 +56,21 @@ import { mapGetters } from 'vuex';
                         if ((i === 0 && j < monthStartsOn) || day > this.dayinmonth) {
                             result[i][j] = undefined;
                         } else {
-                            result[i][j] = new Date(2020, 7, day++).getDate();
+                            result[i][j] = new Date(this.$route.params.year, this.GetNumberMonth(this.$route.params.month), day++).getDate();
                         }
                     }
                 }
                 return result;
-            }
+            },
         },
         methods: {
             getDayOfWeek(){
-                    return this.WEEK_DAYS_FROM_MONDAY[this.date.getDay()];
+                return this.WEEK_DAYS_FROM_MONDAY[this.date.getDay()];
             },
             getmonthcount(){
-                let idmonth = this.GetNumberMonth(this.$route.params.month)
-                this.dayinmonth = new Date(this.$route.params.year, idmonth + 1, 0).getDate()
+                return new Date(this.$route.params.year, this.GetNumberMonth(this.$route.params.month) + 1, 0).getDate()
             }
         },
-        watch: {
-            $route(){
-                this.getmonthcount()
-            }
-        }
     }
 </script>
 
@@ -88,6 +87,8 @@ import { mapGetters } from 'vuex';
         border: 1px solid rgb(221, 221, 221);  
         vertical-align: baseline;
         padding: 5px;
+        width: 100px;
+        cursor: pointer;
     }
     td h3{
         margin: 0px;
@@ -102,4 +103,10 @@ import { mapGetters } from 'vuex';
     thead{
         text-align: end;
     }
+    .red{
+        color: red;
+        outline: 2px solid red;
+        outline-offset: -2px;
+    }
+    /* :style="[$route.params.day == day ? {'border':'2.5px solid red', 'color':'red'}:{'color':'black'}]" */
 </style>

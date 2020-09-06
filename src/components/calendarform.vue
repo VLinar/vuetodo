@@ -3,7 +3,7 @@
         <div class="head">
             <div class="monthhead">
                 <h2>{{GetNameMonth(this.$route.params.month)}} </h2>
-                <select name="" id="">
+                <select name="" id="yearselect" ref="yearselect" @change="edityear()">
                     <option 
                         v-for="(y, i) in year"
                         :value="y"
@@ -97,6 +97,10 @@
             getpage(){
                 this.next = this.GetNextPrevDay(this.$route.params.month, this.$route.params.year).next
                 this.prev = this.GetNextPrevDay(this.$route.params.month, this.$route.params.year).prev
+            },
+            edityear(){
+                let selectyear = this.$refs.yearselect.value
+                this.$router.push(`/${selectyear}/${this.$route.params.month}/1`)
             }
         },
         watch: {
@@ -130,6 +134,7 @@
     }
     .head svg{
         margin: 3px;
+        cursor: pointer;
     }
     .monthhead {
         display: flex;

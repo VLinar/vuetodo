@@ -1,12 +1,6 @@
 <template>
     <div class="todo">
-        <span 
-            class="red"
-        >СЕГОДНЯ</span>
-        <div>
-            <h2>Воскресенье, 22 августа</h2>
-            <!-- <hr> -->
-        </div>
+        <date />
         <div class="task">
             <div class="red">
                 <h3>4 задачи</h3> 
@@ -46,8 +40,11 @@
 </template>
 
 <script>
+    import date from '@/components/date.vue';
     export default {
-        
+        components: {
+            date,
+        },
     }
 </script>
 

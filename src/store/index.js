@@ -9,62 +9,74 @@ export default new Vuex.Store({
         {
             id: 0,
             name: 'Январь',
-            title: 'january'
+            title: 'january',
+            mood: 'января'
         },
         {
             id: 1,
             name: 'Февраль',
-            title: 'februal'
+            title: 'februal',
+            mood: 'февраля'
         },
         {
             id: 2,
             name: 'Март',
-            title: 'mart'
+            title: 'mart',
+            mood: 'марта'
         },
         {
             id: 3,
             name: 'Апрель',
-            title: 'april'
+            title: 'april',
+            mood: 'апреля'
         },
         {
             id: 4,
             name: 'Май',
-            title: 'may'
+            title: 'may',
+            mood: 'мая'
         },
         {
             id: 5,
             name: 'Июнь',
-            title: 'june'
+            title: 'june',
+            mood: 'июня'
         },
         {
             id: 6,
             name: 'Июль',
-            title: 'jule'
+            title: 'jule',
+            mood: 'июля'
         },
         {
             id: 7,
             name: 'Август',
-            title: 'august'
+            title: 'august',
+            mood: 'августа'
         },
         {
             id: 8,
             name: 'Сентябрь',
-            title: 'september'
+            title: 'september',
+            mood: 'сентября'
         },
         {
             id: 9,
             name: 'Октябрь',
-            title: 'oktober'
+            title: 'oktober',
+            mood: 'октября'
         },
         {
             id: 10,
             name: 'Ноябрь',
-            title: 'november'
+            title: 'november',
+            mood: 'ноября'
         },
         {
             id: 11,
             name: 'Декабрь',
-            title: 'december'
+            title: 'december',
+            mood: 'декабря'
         },
     ],
     todo: [
@@ -116,8 +128,10 @@ export default new Vuex.Store({
         return state.mounth.filter(e => e.title === title).map(e => e.name).map(e => {return e})[0]
     },
     GetNumberMonth: (state) => (title) => {
-        // state.mounth.filter(e => e.title === title).map(e => e.id)
         return state.mounth.filter(e => e.title === title).map(e => e.id)[0]
-    } 
+    },
+    GetMoodMonth: (state) => (title) => {
+        return state.mounth.filter(e => e.title === title).map(e => e.mood).map(e => {return e})[0]
+    },
   }
 })
