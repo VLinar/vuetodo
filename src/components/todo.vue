@@ -1,29 +1,7 @@
 <template>
     <div class="todo">
         <date />
-        <div class="task">
-            <div class="red">
-                <h3>4 задачи</h3> 
-            </div>
-            <div>
-                 <div>
-                     <b>8:00</b>
-                 </div>
-                 <div>Test task</div>
-            </div>
-            <div>
-                 <div>
-                     <b>8:00</b>
-                 </div>
-                 <div>Test task</div>
-            </div>
-            <div>
-                 <div>
-                     <b>8:00</b>
-                 </div>
-                 <div>Test task</div>
-            </div>
-        </div>
+        <todo />
         <div class="pagination">
             <span>1</span>
             <span>1</span>
@@ -40,10 +18,12 @@
 </template>
 
 <script>
+    import todo from '@/components/tasks.vue';
     import date from '@/components/date.vue';
     export default {
         components: {
             date,
+            todo
         },
     }
 </script>

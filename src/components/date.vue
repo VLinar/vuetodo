@@ -63,5 +63,6 @@
 <style scoped>
 .red{
     color: red;
+    font-size: 12px;
 }
 </style>

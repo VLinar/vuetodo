@@ -95,7 +95,23 @@ export default new Vuex.Store({
             time: '8:00',
             checked: false,
             userid: 2
-        }
+        },
+        {
+            id: 3,
+            title: "test3",
+            date: "2020-08-26",
+            time: '8:15',
+            checked: true,
+            userid: 1
+        },
+        {
+            id: 4,
+            title: "test4",
+            date: "2020-08-26",
+            time: '8:20',
+            checked: false,
+            userid: 1
+        },
     ],
     year: '2020'
   },
@@ -133,5 +149,8 @@ export default new Vuex.Store({
     GetMoodMonth: (state) => (title) => {
         return state.mounth.filter(e => e.title === title).map(e => e.mood).map(e => {return e})[0]
     },
+    GetTodo: (state) => (id) => {
+        return state.todo.filter(e => e.userid === id)
+    }
   }
 })
