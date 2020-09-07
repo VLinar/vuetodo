@@ -1,13 +1,8 @@
 <template>
     <div>
-        <div v-if="edit">
-            <edittask :title="title" />
-        </div>
-        <div v-else @click="edit = !edit">
-            <viewtask :title="title" :time='time' :ckeck='ckeck'/>
-        </div>
-        <hr>
-        <button @click="edit = !edit">Click</button>
+        <edittask :title="title" v-if="edit" :time='time' :editfunc='this.editchange'/>
+        <viewtask v-else :title="title" :time='time' :ckeck='ckeck' :editfunc='this.editchange'/>
+        
     </div>
 </template>
 
@@ -29,6 +24,11 @@
             viewtask,
             edittask
         },
+        methods:{
+            editchange(){
+                this.edit = !this.edit
+            }
+        }
     }
 </script>
 

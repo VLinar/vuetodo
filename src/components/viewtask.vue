@@ -1,8 +1,11 @@
 <template>
-    <div>
+    <div class="flex">
         <input type="checkbox" name="" id="" :checked="ckeck ? true : false">
-        <b>{{time}}</b>
-        <span> {{title}}</span>                 
+        <div :class="ckeck? 'line': ''" @click="editfunc()">
+            <b>{{time}}</b>
+            <span> {{title}}</span>     
+        </div>
+                    
     </div>
 </template>
 
@@ -11,11 +14,18 @@
         props: {
             title: String,
             time: String,
-            ckeck: Boolean
+            ckeck: Boolean,
+            editfunc: Function
         }
     }
 </script>
 
 <style scoped>
-
+    .flex{
+        display: flex;
+        flex-direction: row;
+    }
+    .line{
+        text-decoration: line-through;
+    }
 </style>
