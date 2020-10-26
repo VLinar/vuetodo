@@ -82,9 +82,9 @@ export default new Vuex.Store({
     todo: [
         {
             id: 1,
-            title: "test",
-            date: "2020-08-26",
-            time: '8:00',
+            title: "test test test test testtesttest test test testtest testtesttest test test testtest",
+            date: "2020-10-25",
+            time: '08:00',
             checked: false,
             userid: 1
         },
@@ -92,23 +92,79 @@ export default new Vuex.Store({
             id: 2,
             title: "test2",
             date: "2020-08-26",
-            time: '8:00',
+            time: '08:00',
             checked: false,
             userid: 2
         },
         {
             id: 3,
-            title: "test3",
+            title: "testestet",
             date: "2020-08-26",
-            time: '8:15',
+            time: '08:15',
             checked: true,
             userid: 1
         },
         {
             id: 4,
-            title: "test4",
+            title: "testest",
             date: "2020-08-26",
-            time: '8:20',
+            time: '08:20',
+            checked: true,
+            userid: 1
+        },
+        {
+            id: 5,
+            title: "testest",
+            date: "2020-08-26",
+            time: '08:20',
+            checked: false,
+            userid: 1
+        },
+        {
+            id: 6,
+            title: "test test test test testtesttest test test testtest testtesttest test test testtest",
+            date: "2020-10-25",
+            time: '09:00',
+            checked: false,
+            userid: 1
+        },
+        {
+            id: 7,
+            title: "test test test test testtesttest test test testtest testtesttest test test testtest",
+            date: "2020-10-25",
+            time: '10:00',
+            checked: false,
+            userid: 1
+        },
+        {
+            id: 8,
+            title: "test test test test testtesttest test test testtest testtesttest test test testtest",
+            date: "2020-10-25",
+            time: '14:00',
+            checked: false,
+            userid: 1
+        },
+        {
+            id: 9,
+            title: "test test test test testtesttest test test testtest testtesttest test test testtest",
+            date: "2020-10-25",
+            time: '16:00',
+            checked: false,
+            userid: 1
+        },
+        {
+            id: 10,
+            title: "test test test test testtesttest test test testtest testtesttest test test testtest",
+            date: "2020-10-25",
+            time: '08:00',
+            checked: false,
+            userid: 1
+        },
+        {
+            id: 11,
+            title: "test test test test testtesttest test test testtest testtesttest test test testtest",
+            date: "2020-10-25",
+            time: '08:00',
             checked: false,
             userid: 1
         },
@@ -116,8 +172,29 @@ export default new Vuex.Store({
     year: '2020'
   },
   mutations: {
+      checked(state, value){
+        state.todo.map(e => {
+            if(e.id === value){
+                  e.checked = !e.checked
+            }
+            return e
+        })
+      },
+      deleted(state, value){
+        state.todo = state.todo.filter(e => e.id !== value)
+        console.log(state.todo)
+      }
   },
   actions: {
+      checkededit({commit}, val){
+        commit('checked', val)
+      },
+      deletedtask({commit}, value){
+          commit('deleted', value)
+      },
+      edittododate({commit}, val){
+        commit('checked', val)
+      }
   },
   getters: {
     Getmonth: (state) => {
@@ -144,13 +221,28 @@ export default new Vuex.Store({
         return state.mounth.filter(e => e.title === title).map(e => e.name).map(e => {return e})[0]
     },
     GetNumberMonth: (state) => (title) => {
-        return state.mounth.filter(e => e.title === title).map(e => e.id)[0]
+        let number = state.mounth.filter(e => e.title === title).map(e => e.id)[0];
+        if(number.toString.length > 1){
+            return number
+        }else {
+            return `0${number}`
+        }
     },
     GetMoodMonth: (state) => (title) => {
         return state.mounth.filter(e => e.title === title).map(e => e.mood).map(e => {return e})[0]
     },
-    GetTodo: (state) => (id) => {
-        return state.todo.filter(e => e.userid === id)
+    GetTodo: (state) => (id, date) => {
+        // console.log(state.todo.filter(e => e.userid === id && e.date === date))
+        return state.todo.filter(e => e.userid === id && e.date === date).sort((a, b) => {
+            if (a.time > b.time) {
+                return 1;
+            }
+            if (a.time < b.time) {
+              return -1;
+            }
+            return 0;
+        })
+        // return state.todo.filter(e => e.userid === id && e.date === date)
     }
   }
 })

@@ -2,13 +2,6 @@
     <div class="todo">
         <date />
         <todo />
-        <div class="pagination">
-            <span>1</span>
-            <span>1</span>
-            <span>1</span>
-            <span>1</span>
-            <span>1</span>
-        </div>
         <div class="addbutton">
             <b>
                 + добавление задач
@@ -32,7 +25,7 @@
     .todo {
         text-align: left;
         padding: 15px;
-        padding-right: 40px;
+        /* padding-right: 40px; */
         border-right: 1px solid rgb(200, 201, 207);
     }
     .todo span{

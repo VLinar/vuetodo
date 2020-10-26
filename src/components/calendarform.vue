@@ -114,14 +114,14 @@
 
 <style scoped>
     .calblock{
-        padding: 15px 20px;
+        padding: 15px 15px 15px 20px;
     }
     .head{
         display: grid;
         grid-template-columns: 2fr 1fr!important;
         align-items: center;
         padding: 0px 10px;
-
+        margin-bottom: 25px;
     }
     .head h2{
         margin: 10px 0px;

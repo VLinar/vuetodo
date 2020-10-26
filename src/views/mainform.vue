@@ -52,5 +52,8 @@ import { mapGetters } from 'vuex';
     background: white;
     grid-template-columns: 1fr 2fr;
     display: grid;
+    width: 1045px;
+    padding: 15px;
+    border-radius: 15px;
 }
 </style>

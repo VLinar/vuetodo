@@ -4,8 +4,9 @@
             class="red"
             v-if="SurelyToday()"
         >СЕГОДНЯ</span>
-        <div>
-            <h2>{{this.GetFullDateStr()}}</h2>
+        <div class="date">
+            <h2>{{this.GetFullDateStr().dayweek}},</h2>
+            <h2>{{this.GetFullDateStr().date}}</h2>
         </div>
     </div>
 </template>
@@ -16,11 +17,12 @@
     export default {
         data() {
             return {
-                today: '',
+                today: new Date(),
             }
         },
         created(){
-            this.today = new Date(this.$route.params.year, this.GetNumberMonth(this.$route.params.month), this.$route.params.day).toISOString()
+            // this.today = 
+            this.today.setHours(0,0,0)
         },
         computed: {
             ...mapGetters([
@@ -30,8 +32,8 @@
         },
         methods: {
             SurelyToday(){
-                let datetoday = new Date(this.$route.params.year, this.GetNumberMonth(this.$route.params.month), this.$route.params.day).toISOString()
-                return this.today === datetoday ?  true : false 
+                let datetoday = new Date(this.$route.params.year, this.GetNumberMonth(this.$route.params.month), this.$route.params.day)
+                return this.today.toString() === datetoday.toString() ?  true : false 
             },
             DayOfWeek(day){
                 switch(day){
@@ -50,19 +52,29 @@
                 let date = this.GetDayMonth(this.$route.params.day, this.$route.params.month)
                 let dayweek = this.DayOfWeek(fulldate.getDay())
                 
-                return dayweek + date
+                let obj = {}
+                obj.dayweek = dayweek;
+                obj.date = date;
+                
+                return obj
             },
             GetDayMonth(day, month){
                 let M = this.GetMoodMonth(month)
-                return `, ${day} ${M}`
+                return `${day} ${M}`
             }
         }
     }
 </script>
 
 <style scoped>
-.red{
-    color: red;
-    font-size: 12px;
-}
+    .red{
+        color: red;
+        font-size: 12px;
+    }
+    .date{
+        margin: 15px 0px;
+    }
+    h2{
+        margin: 0px;
+    }
 </style>

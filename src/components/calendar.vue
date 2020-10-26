@@ -97,9 +97,9 @@ import { mapGetters } from 'vuex';
     td:hover{
         background: #eaeae9
     }
-    .calendar{
+    /* .calendar{
         padding: 10px;
-    }
+    } */
     thead{
         text-align: end;
     }

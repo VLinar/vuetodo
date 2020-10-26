@@ -1,8 +1,7 @@
 <template>
     <div>
-        <edittask :title="title" v-if="edit" :time='time' :editfunc='this.editchange'/>
-        <viewtask v-else :title="title" :time='time' :ckeck='ckeck' :editfunc='this.editchange'/>
-        
+        <edittask :title="title" v-if="edit" :time='time' :editfunc='this.editchange' :id='id'/>
+        <viewtask v-else :title="title" :time='time' :ckeck='ckeck' :editfunc='this.editchange' :id='id'/>
     </div>
 </template>
 
@@ -16,6 +15,7 @@
             }
         },
         props: {
+            id: Number,
             title: String,
             time: String,
             ckeck: Boolean
@@ -33,5 +33,7 @@
 </script>
 
 <style scoped>
-
+    div{
+        margin: 5px 0px;
+    }
 </style>
