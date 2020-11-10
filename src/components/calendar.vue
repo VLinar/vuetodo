@@ -68,7 +68,7 @@ import { mapGetters } from 'vuex';
                 return this.WEEK_DAYS_FROM_MONDAY[this.date.getDay()];
             },
             getmonthcount(){
-                return new Date(this.$route.params.year, this.GetNumberMonth(this.$route.params.month) + 1, 0).getDate()
+                return new Date(this.$route.params.year, Number(this.GetNumberMonth(this.$route.params.month)) + 1, 0).getDate()
             }
         },
     }

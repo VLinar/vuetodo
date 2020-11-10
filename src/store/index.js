@@ -139,7 +139,7 @@ export default new Vuex.Store({
         {
             id: 8,
             title: "test test test test testtesttest test test testtest testtesttest test test testtest",
-            date: "2020-10-25",
+            date: "2020-11-11",
             time: '14:00',
             checked: false,
             userid: 1
@@ -147,7 +147,7 @@ export default new Vuex.Store({
         {
             id: 9,
             title: "test test test test testtesttest test test testtest testtesttest test test testtest",
-            date: "2020-10-25",
+            date: "2020-11-11",
             time: '16:00',
             checked: false,
             userid: 1
@@ -155,15 +155,15 @@ export default new Vuex.Store({
         {
             id: 10,
             title: "test test test test testtesttest test test testtest testtesttest test test testtest",
-            date: "2020-10-25",
+            date: "2020-11-11",
             time: '08:00',
             checked: false,
             userid: 1
         },
         {
             id: 11,
-            title: "test test test test testtesttest test test testtest testtesttest test test testtest",
-            date: "2020-10-25",
+            title: "test",
+            date: "2020-11-11",
             time: '08:00',
             checked: false,
             userid: 1
@@ -183,6 +183,15 @@ export default new Vuex.Store({
       deleted(state, value){
         state.todo = state.todo.filter(e => e.id !== value)
         console.log(state.todo)
+      },
+      updatetodo(state,val){
+          state.todo.map(e => {
+              if(e.id === val.id){
+                  e.time = val.time
+                  e.title = val.task
+              }
+              return e
+          })
       }
   },
   actions: {
@@ -193,7 +202,7 @@ export default new Vuex.Store({
           commit('deleted', value)
       },
       edittododate({commit}, val){
-        commit('checked', val)
+        commit('updatetodo', val)
       }
   },
   getters: {

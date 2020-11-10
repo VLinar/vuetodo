@@ -1,9 +1,8 @@
 <template>
-    <div>
+    <div class="edt">
         <input type="time" value="08:00" ref="time">
-        <input type="text" value="Test task" ref="task">
-        <!-- <button @click="edittododate(1,2)">OK</button>    -->
-         <button @click="test">OK</button>          
+        <textarea value="Test task" cols="30" rows="2" ref="task" placeholder="text"></textarea>   
+        <button @click="updatetask">OK</button>          
     </div>
 </template>
 
@@ -11,22 +10,36 @@
 import { mapActions } from 'vuex'
     export default {
         props:{
-            editfunc: Function
+            editfunc: Function,
+            id: Number
         },
         methods:{
             ...mapActions([
                 'edittododate'
             ]),
-            test(){
-                let test1 = {}
-                test1.time = this.$refs.time.value
-                test1.task = this.$refs.task.value
-                this.edittododate(test1)
+            updatetask(){
+                let payload = {}
+                
+                payload.id = this.id
+                payload.time = this.$refs.time.value
+                payload.task = this.$refs.task.value
+
+                this.edittododate(payload),
+                // Перевод в режим просмотра
+                this.editfunc()
             }
         }
     }
 </script>
 
 <style scoped>
+.edt {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 8px;
+}
 
+.edt input{
+    width: 23%;
+}
 </style>
