@@ -164,7 +164,7 @@ export default new Vuex.Store({
             id: 11,
             title: "test",
             date: "2020-11-11",
-            time: '08:00',
+            time: '20:00',
             checked: false,
             userid: 1
         },

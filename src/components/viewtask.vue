@@ -103,4 +103,7 @@ import { mapActions } from 'vuex'
         display: flex;
         flex-direction: column;
     }
+    input[type=checkbox]{
+        cursor:pointer;
+    }
 </style>

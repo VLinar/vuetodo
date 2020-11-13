@@ -143,7 +143,7 @@
     select{
         height: fit-content;
         display: block;
-        font-size: 1.5em;
+        font-size: 1.4em;
         margin: 0px 5px;
     }
     option {
