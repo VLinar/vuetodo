@@ -2,11 +2,7 @@
     <div class="todo">
         <date />
         <todo />
-        <div class="addbutton">
-            <b>
-                + добавление задач
-            </b>
-        </div>
+        <div class="addbutton">Добавить задачу</div>
     </div>
 </template>
 
@@ -41,18 +37,23 @@
         padding-bottom: 25px;
         min-height: 230px;
     }
-    .addbutton {
-        text-align: center;
-    }
+    
     .red{
         color: red;
     }
     .addbutton {
         padding: 10px 15px;
-        background: rgb(200, 201, 207);
+        background-color: #f8f9fa;
         width: fit-content;
         margin: auto;
         border-radius: 10px;
+        text-align: center;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    .addbutton:hover {
+        /* background-color: rgb(200, 201, 207); */
+        background-color: #e2e6ea;
     }
     .pagination{
         text-align: center;
