@@ -1,7 +1,7 @@
 <template>
     <div class="edt">
         <input type="time" v-model="inputtime">
-        <textarea v-model="areatext" cols="30" rows="3" placeholder="Text"></textarea>   
+        <textarea v-model="areatext" cols="30" rows="3" placeholder="Text" maxlength="255"></textarea>   
         <button @click="updatetask">Изменить</button>      
     </div>
 </template>
@@ -56,6 +56,7 @@ import { mapActions } from 'vuex'
     margin: 2px;
     padding: 5px;
     border-radius: 5px;
+    resize: none;
 }
 
 input[type="time"]{
