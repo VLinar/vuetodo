@@ -48,5 +48,7 @@
 <style scoped>
   div {
     margin: 5px 0px;
+    margin-right: 5px;
+    min-width: 310px;
   }
 </style>

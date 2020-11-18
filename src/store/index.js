@@ -125,7 +125,7 @@ export default new Vuex.Store({
         id: 6,
         title:
           "test test test test testtesttest test test testtest testtesttest test test testtest",
-        date: "2020-10-25",
+        date: "2020-11-11",
         time: "09:00",
         checked: false,
         userid: 1,
@@ -134,7 +134,7 @@ export default new Vuex.Store({
         id: 7,
         title:
           "test test test test testtesttest test test testtest testtesttest test test testtest",
-        date: "2020-10-25",
+        date: "2020-11-11",
         time: "10:00",
         checked: false,
         userid: 1,

@@ -61,7 +61,7 @@
     vertical-align: middle;
     user-select: none;
     border: 1px solid transparent;
-    padding: 0.375rem 0.75rem;
+    padding: 0.1rem 0.7rem;
     font-size: 1rem;
     line-height: 1.5;
     border-radius: 0.25rem;
