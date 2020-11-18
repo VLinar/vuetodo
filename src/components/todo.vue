@@ -51,7 +51,7 @@
     align-items: center;
     display: block;
     padding-bottom: 25px;
-    min-height: 230px;
+    /* min-height: 230px; */
   }
 
   .red {
