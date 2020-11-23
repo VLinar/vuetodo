@@ -7,24 +7,32 @@
       placeholder="Добавить задачу"
       v-model="areatext"
     ></textarea>
-    <input type="time" v-model="time" />
+    <input type="time" v-model="time" value="00:00" />
     <div class="btnposition">
-      <button>Добавить</button>
+      <button @click="addtodoinstate">Добавить</button>
       <button @click="addkey">Отменить</button>
     </div>
   </div>
 </template>
 
 <script>
+  import { mapActions } from "vuex";
   export default {
     data() {
       return {
         areatext: "",
-        time: "",
+        time: "00:00",
       };
     },
     props: {
       addkey: Function,
+    },
+    methods: {
+      ...mapActions(["addtodo"]),
+      addtodoinstate() {
+        this.addtodo({ title: this.areatext, time: this.time });
+        this.addkey();
+      },
     },
   };
 </script>

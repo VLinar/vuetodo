@@ -2,11 +2,22 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 
 Vue.use(VueRouter);
+import store from "@/store";
+
+const getMounth = store.getters["Getmonth"];
 
 const routes = [
   {
     path: "/",
     name: "Home",
+    redirect: () => {
+      let date = new Date();
+      let todaymonth = getMounth.filter((e) => e.id === date.getMonth());
+
+      return `${date.getFullYear()}/${todaymonth.map(
+        (e) => e.title
+      )}/${date.getDate()}`;
+    },
     component: () => import("@/views/auth"),
   },
   {

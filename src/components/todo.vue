@@ -3,7 +3,7 @@
     <date />
     <todo />
     <div class="addbutton" v-if="!add" @click="addstatus">Добавить задачу</div>
-    <addtask v-if="add" :addkey="addstatus" />
+    <addtask v-else :addkey="addstatus" />
   </div>
 </template>
 

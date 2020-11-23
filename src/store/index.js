@@ -199,6 +199,18 @@ export default new Vuex.Store({
         return e;
       });
     },
+    addtodo(state, val) {
+      let date = new Date();
+      val.date = `${date.getFullYear()}-${
+        date.getMonth() + 1
+      }-${date.getDate()}`;
+      val.id =
+        state.todo.map((e) => e.id).reduce((e1, e2) => (e1 > e2 ? e1 : e2)) + 1;
+      val.checked = false;
+      val.userid = 1;
+      console.log(val);
+      state.todo.push(val);
+    },
   },
   actions: {
     checkededit({ commit }, val) {
@@ -209,6 +221,9 @@ export default new Vuex.Store({
     },
     edittododate({ commit }, val) {
       commit("updatetodo", val);
+    },
+    addtodo({ commit }, val) {
+      commit("addtodo", val);
     },
   },
   getters: {
