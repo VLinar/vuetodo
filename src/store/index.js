@@ -200,10 +200,10 @@ export default new Vuex.Store({
       });
     },
     addtodo(state, val) {
-      let date = new Date();
-      val.date = `${date.getFullYear()}-${
-        date.getMonth() + 1
-      }-${date.getDate()}`;
+      // let date = new Date();
+      // val.date = `${date.getFullYear()}-${
+      //   date.getMonth() + 1
+      // }-${date.getDate()}`;
       val.id =
         state.todo.map((e) => e.id).reduce((e1, e2) => (e1 > e2 ? e1 : e2)) + 1;
       val.checked = false;

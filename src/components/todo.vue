@@ -75,4 +75,10 @@
     text-align: center;
     padding-bottom: 20px;
   }
+  @media screen and (max-width: 480px) {
+    .todo {
+      grid-row-start: 2;
+      grid-row-end: 3;
+    }
+  }
 </style>

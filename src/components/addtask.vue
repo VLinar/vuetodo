@@ -16,7 +16,7 @@
 </template>
 
 <script>
-  import { mapActions } from "vuex";
+  import { mapActions, mapGetters } from "vuex";
   export default {
     data() {
       return {
@@ -27,11 +27,23 @@
     props: {
       addkey: Function,
     },
+    computed: {
+      ...mapGetters(["GetNumberMonth"]),
+    },
     methods: {
       ...mapActions(["addtodo"]),
       addtodoinstate() {
-        this.addtodo({ title: this.areatext, time: this.time });
+        this.addtodo({
+          title: this.areatext,
+          time: this.time,
+          date: this.returndate(),
+        });
         this.addkey();
+      },
+      returndate() {
+        return `${this.$route.params.year}-${
+          Number(this.GetNumberMonth(this.$route.params.month)) + 1
+        }-${this.$route.params.day}`;
       },
     },
   };
