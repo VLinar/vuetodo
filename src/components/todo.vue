@@ -79,6 +79,7 @@
     .todo {
       grid-row-start: 2;
       grid-row-end: 3;
+      border-right: none;
     }
   }
 </style>
